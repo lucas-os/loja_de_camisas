@@ -1,0 +1,67 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 12 de abr. de 2023, 20:52:05
+    Author     : Desktop
+*/
+
+/* Estilo geral */
+
+.carrinho {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 20px 0;
+  padding: 20px;
+}
+.carrinho h2 {
+  color: #007f00;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Estilo da tabela */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+table th {
+  background-color: #007f00;
+  color: #fff;
+}
+table td:nth-child(2), table td:nth-child(3), table td:nth-child(4) {
+  text-align: right;
+}
+table tfoot td {
+  font-weight: bold;
+}
+
+/* Estilo dos botões */
+.botoes {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.botoes form {
+  margin-left: 10px;
+}
+.botoes input[type="submit"] {
+  background-color: #007f00;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+.botoes input[type="submit"]:hover {
+  background-color: #005200;
+}

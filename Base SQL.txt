@@ -1,0 +1,80 @@
+create table cliente (
+codigo serial primary key,
+nome varchar(50),
+login varchar(50) unique,
+senha varchar(20) );
+
+------------------------------------------------------------------------------------------------------------------------------
+
+create table departamento(
+codigo serial primary key,
+nome varchar(50));
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+create table produto (
+codigo serial primary key,
+descricao varchar(50),
+preco float,
+qtde int check(qtde >=0),
+imagem varchar(100),
+coddep int not null references departamento(codigo) on update cascade);
+
+------------------------------------------------------------------------------------------------------------------------------
+
+create table venda(
+codigo serial primary key,
+total float default 0,
+datav timestamp default current_timestamp,
+codcli int not null references cliente(codigo) on update cascade);
+
+------------------------------------------------------------------------------------------------------------------------------
+
+create table item (
+codigo serial primary key,
+qtde int check(qtde>0),
+precounit float,
+codproduto int not null references produto(codigo) on update cascade,
+codvenda int not null references venda(codigo) on update cascade);
+
+------------------------------------------------------------------------------------------------------------------------------
+
+insert into departamento(nome) values ('Camisa');
+insert into departamento(nome) values ('Blusa');
+insert into departamento(nome) values ('Chuteira');
+
+------------------------------------------------------------------------------------------------------------------------------
+
+insert into produto(descricao, preco, qtde, imagem, coddep) values ('Camisa São Paulo I', 350, 100, 'figSPFC.jpg', 1);
+insert into produto(descricao, preco, qtde, imagem, coddep) values ('Camisa Barcelona I', 300 ,100, 'figBarca.jpg', 1);
+insert into produto(descricao, preco, qtde, imagem, coddep) values ('Camisa São Paulo Favela', 300 ,100, 'figSPFCFavela.jpg', 1);
+insert into produto(descricao, preco, qtde, imagem, coddep) values ('Camisa Vasco', 300 ,100, 'figVasco.jpg', 1);
+insert into produto(descricao, preco, qtde, imagem, coddep) values ('Camisa Cruzeiro', 300 ,100, 'figCruzeiro.jpg', 1);
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+insert into produto(descricao, preco, qtde, imagem, coddep) values ('Blusa São Paulo ', 400, 100, 'figBlusaSPFC.jpg', 2);
+insert into produto(descricao, preco, qtde, imagem, coddep) values ('Blusa Cruzeiro', 400, 100, 'figBlusaCruzeiro.jpg', 2);
+insert into produto(descricao, preco, qtde, imagem, coddep) values ('Blusa City', 400, 100, 'figBlusaCity.jpg', 2);
+insert into produto(descricao, preco, qtde, imagem, coddep) values ('Blusa Vasco', 400, 100, 'figBlusaVasco.jpg', 2);
+insert into produto(descricao, preco, qtde, imagem, coddep) values ('Blusa Barcelona', 400, 100, 'figBlusaBarcelona.jpg', 2);
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+insert into produto(descricao, preco, qtde, imagem, coddep) values ('Chuteira do Messi', 1000, 100, 'figMessi.jpg', 3);
+insert into produto(descricao, preco, qtde, imagem, coddep) values ('Chuteira do Neymar', 900, 100, 'figNeymar.jpg', 3);
+insert into produto(descricao, preco, qtde, imagem, coddep) values ('Chuteira Preta', 300, 100, 'figChutPreta.jpg', 3);
+insert into produto(descricao, preco, qtde, imagem, coddep) values ('Chuteira Vermelha', 300, 100, 'figChutVermelha.jpg', 3);
+insert into produto(descricao, preco, qtde, imagem, coddep) values ('Chuteira Branca', 300, 100, 'figChutBranca.jpg', 3);
+
+
+drop table item;
+drop table venda;
+drop table produto;
+drop table departamento;
+drop table cliente;
+
+select * from produto;
+select * from cliente;
+select * from venda;
+select * from item;
